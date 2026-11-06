@@ -10,6 +10,7 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;",
 
 $("#heroLede").textContent = site.lede;
 $("#year").textContent = new Date().getFullYear();
+$("#labRepo").href = site.atmosRepo;
 $("#aboutBio").innerHTML = site.bio.map(p => `<p>${esc(p)}</p>`).join("");
 $("#aboutSkills").innerHTML = site.skills.map(s => `
   <div class="skill-group">
@@ -96,12 +97,12 @@ function openProject(id) {
     <h2 id="projectTitle">${esc(p.title)}</h2>
     <p class="project__subtitle">${esc(p.subtitle)}</p>
     <dl class="facts">${(p.facts || []).map(([k, v]) => `<div><dt class="mono">${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
+    ${p.links?.length ? `<div class="project__links">${p.links.map(l => `<a class="btn btn--primary" href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
     ${videoBlock(p.video, p.title)}
     ${p.compare?.length ? `<h3 class="block-title">Before / after</h3><p class="block-sub">Both versions play in sync. Switch at any point to compare the same moment.</p><div class="stack" data-compare></div>` : ""}
     <div class="prose">${p.body || ""}</div>
     ${p.audio?.length ? `<h3 class="block-title">Listen</h3><p class="block-sub">Click the waveform to seek.</p><div class="stack" data-audio></div>` : ""}
     ${p.gallery?.length ? `<h3 class="block-title">Gallery</h3><div class="gallery">${p.gallery.map(g => `<figure class="figure"><img src="${esc(g.src)}" alt="${esc(g.caption || "")}" loading="lazy"><figcaption>${esc(g.caption || "")}</figcaption></figure>`).join("")}</div>` : ""}
-    ${p.links?.length ? `<div class="contact__links">${p.links.map(l => `<a class="btn" href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
   `;
   const audioWrap = body.querySelector("[data-audio]");
   p.audio?.forEach(a => { const pl = new WavePlayer(a); audioWrap.append(pl.el); mounted.push(pl); });
