@@ -224,16 +224,8 @@ input[type="checkbox"] { accent-color: var(--accent); width: 16px; height: 16px;
 .readout dt { color: var(--muted); font-size: 10px; }
 .readout dd { margin: 2px 0 0; font-size: 15px; color: var(--text); text-transform: none; }
 .lab__note { color: var(--muted); font-size: 13px; margin: 0; }
-.lab__tool {
-  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px 40px;
-  margin-top: 20px; padding: 24px 28px;
-  background: var(--bg-2); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: var(--radius);
-}
-.lab__tool > div:first-child { flex: 1 1 420px; }
-.lab__tool .eyebrow { margin-bottom: 8px; }
-.lab__tool-text { margin: 0; color: #c9c8c2; max-width: 640px; }
-.lab__tool-text strong { color: var(--text); font-weight: 600; }
-.lab__tool-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.lab__code { align-self: flex-start; color: var(--muted); text-decoration: none; transition: color .2s; }
+.lab__code:hover { color: var(--accent); }
 .project__links { display: flex; flex-wrap: wrap; gap: 10px; margin: -12px 0 32px; }
 
 /* ---------- reviews ---------- */
