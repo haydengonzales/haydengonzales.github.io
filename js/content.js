@@ -23,7 +23,7 @@ export const site = {
   ],
   bio: [
     "I'm a sound designer focused on games and spatial audio: I like the whole chain, from recording and designing a sound to the systems that decide when and how it plays.",
-    "My recent work includes a fully native Unreal Engine 5 audio pass built on MetaSounds and a C++ audio subsystem, a sound redesign of Call of Duty: Modern Warfare II gameplay, and a tool that turns video motion tracking into Dolby Atmos panning automation.",
+    "My recent work includes a fully native Unreal Engine 5 audio pass built on MetaSounds and a C++ audio subsystem, a sound redesign of Call of Duty: Modern Warfare 2 Campaign Remastered gameplay, and a tool that turns video motion tracking into Dolby Atmos panning automation.",
   ],
   skills: [
     { group: "Sound design", items: ["Pro Tools", "iZotope RX", "Field & Foley recording", "Weapons & UI", "Ambience"] },
@@ -98,16 +98,16 @@ export const projects = [
   {
     id: "mw2-redesign",
     title: "MW2 Sound Redesign",
-    subtitle: "Call of Duty: Modern Warfare II, re-sounded from scratch",
+    subtitle: "Call of Duty: Modern Warfare 2 Campaign Remastered, re-sounded from scratch",
     year: "2026",
     category: "Sound redesign",
-    summary: "Stripped the original audio from a Modern Warfare II gameplay clip and rebuilt every weapon, foley, ambience and UI sound.",
+    summary: "Stripped the original audio from a Modern Warfare 2 Campaign Remastered gameplay clip and rebuilt every weapon, foley, ambience and UI sound.",
     tags: ["Sound design", "Pro Tools", "Weapons", "Mix"],
     facts: [
       ["Role", "Sound design & mix"],
-      ["Source", "MW2 gameplay capture"],
+      ["Source", "Contingency mission capture"],
       ["DAW", "Pro Tools"],
-      ["Length", "TBD"],
+      ["Length", "1:05"],
     ],
     cover: null,
     hoverVideo: null,
@@ -125,8 +125,8 @@ export const projects = [
       {
         title: "Original vs. redesign",
         note: "Toggle mid-playback to hear the difference",
-        a: { label: "Original", src: "assets/audio/mw2/original.mp3" },
-        b: { label: "Redesign", src: "assets/audio/mw2/redesign.mp3" },
+        a: { label: "Original", src: "assets/audio/mw2/original.wav" },
+        b: { label: "Redesign", src: "assets/audio/mw2/redesign.wav" },
       },
     ],
   },

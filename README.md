@@ -25,7 +25,7 @@ links, and every project. Each field is commented.
 
 | Kind | Where | Notes |
 |---|---|---|
-| Audio clips | `assets/audio/<project>/` | MP3, 320 kbps. Paths already listed in `content.js` light up as soon as the file exists. |
+| Audio clips | `assets/audio/<project>/` | MP3 or WAV (MP3 loads faster). Paths already listed in `content.js` light up as soon as the file exists. |
 | Long video (reel, gameplay) | **Vimeo** | Upload, then set `video: { provider: "vimeo", id: "123456789" }`. Keeps the repo small and the player ad-free. |
 | Short clips (< ~20 MB) | `assets/video/` | `video: { provider: "file", src: "assets/video/x.mp4" }` |
 | Card hover loop | `assets/video/` | Silent 3–6 s MP4, set as `hoverVideo`. Plays when the card is hovered. |
