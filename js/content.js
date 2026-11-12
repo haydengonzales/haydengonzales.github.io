@@ -203,6 +203,7 @@ export const projects = [
   },
   {
     id: "ui-redesign",
+    videoOnly: true, // the card plays the video; there is no project page
     title: "UI Sound Redesign",
     subtitle: "All of the interface sound for three games, in one piece",
     year: "2026",

@@ -46,25 +46,39 @@ if (reviewsBackground.video) {
 
 const HUES = [20, 195, 280, 140];
 const grid = $("#projectGrid");
+const PLAY = '<svg viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></svg>';
 projects.forEach((p, i) => {
-  const card = document.createElement(p.comingSoon ? "div" : "button");
+  // The thumbnail plays the project's video; the rest of the card opens its page.
+  const hasPage = !p.comingSoon && !p.videoOnly;
+  const openPage = () => { location.hash = `#/${p.id}`; };
+  const badge = p.comingSoon ? p.badge || "In progress" : !p.video && p.videoOnly ? "Video coming soon" : "";
+  const mediaTag = p.video || hasPage ? "button" : "div";
+  const card = document.createElement("article");
   card.className = "card";
-  if (p.comingSoon) card.setAttribute("aria-disabled", "true");
-  else card.addEventListener("click", () => { location.hash = `#/${p.id}`; });
+  if (!p.video && !hasPage) card.setAttribute("aria-disabled", "true");
   card.innerHTML = `
-    <div class="card__media">
+    <${mediaTag} class="card__media"${mediaTag === "button" ? ` aria-label="${p.video ? "Play" : "Open"} ${esc(p.title)}${p.video ? " video" : ""}"` : ""}>
       ${p.cover ? `<img src="${esc(p.cover)}" alt="" loading="lazy">` : `<canvas aria-hidden="true"></canvas>`}
       ${p.hoverVideo ? `<video src="${esc(p.hoverVideo)}" muted loop playsinline preload="none"></video>` : ""}
-      ${p.comingSoon ? `<span class="badge mono">${esc(p.badge || "In progress")}</span>` : ""}
-    </div>
+      ${p.video ? `<span class="card__play" aria-hidden="true">${PLAY}</span>` : ""}
+      ${badge ? `<span class="badge mono">${esc(badge)}</span>` : ""}
+    </${mediaTag}>
     <div class="card__body">
       <div class="card__meta mono"><span>${esc(p.category)}</span><span>${esc(p.year)}</span></div>
       <h3 class="card__title">${esc(p.title)}</h3>
       <p class="card__summary">${esc(p.summary)}</p>
       <ul class="tags">${p.tags.map(t => `<li>${esc(t)}</li>`).join("")}</ul>
-      ${p.comingSoon ? "" : `<span class="card__more">Open project →</span>`}
+      ${hasPage ? `<a class="card__more" href="#/${esc(p.id)}">Project details →</a>` : ""}
     </div>`;
   grid.append(card);
+  card.querySelector(".card__media").addEventListener("click", () => {
+    if (p.video) playVideo(p);
+    else if (hasPage) openPage();
+  });
+  if (hasPage) {
+    card.querySelector(".card__body").addEventListener("click", e => { if (!e.target.closest("a")) openPage(); });
+    card.classList.add("card--linked");
+  }
   const cv = card.querySelector("canvas");
   if (cv) requestAnimationFrame(() => drawCover(cv, p.id, HUES[i % HUES.length]));
   const vid = card.querySelector("video");
@@ -75,17 +89,34 @@ projects.forEach((p, i) => {
   card.addEventListener("mouseenter", () => uiSound("tick"));
 });
 
+// ---------- video player ----------
+
+const videoDialog = $("#videoDialog");
+function playVideo(p) {
+  pauseAll();
+  lab.stop();
+  $("#videoTitle").textContent = p.title;
+  $("#videoFrame").innerHTML = videoBlock(p.video, p.title, true);
+  videoDialog.showModal();
+  uiSound("open");
+}
+// Emptying the frame on close is what stops playback.
+videoDialog.addEventListener("close", () => { $("#videoFrame").innerHTML = ""; });
+videoDialog.addEventListener("click", e => { if (e.target === videoDialog) videoDialog.close(); });
+$("#videoClose").addEventListener("click", () => videoDialog.close());
+
 // ---------- project detail ----------
 
 const dialog = $("#projectDialog");
 const body = $("#projectBody");
 let mounted = [];
 
-function videoBlock(v, title) {
+function videoBlock(v, title, autoplay = false) {
   if (!v) return "";
-  if (v.provider === "vimeo") return `<div class="video"><iframe src="https://player.vimeo.com/video/${esc(v.id)}?dnt=1&title=0&byline=0&portrait=0&color=ff6a2b" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${esc(title)}"></iframe></div>`;
-  if (v.provider === "youtube") return `<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/${esc(v.id)}?rel=0&modestbranding=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="${esc(title)}"></iframe></div>`;
-  return `<div class="video"><video src="${esc(v.src)}" ${v.poster ? `poster="${esc(v.poster)}"` : ""} controls playsinline preload="metadata"></video></div>`;
+  const auto = autoplay ? "&autoplay=1" : "";
+  if (v.provider === "vimeo") return `<div class="video"><iframe src="https://player.vimeo.com/video/${esc(v.id)}?dnt=1&title=0&byline=0&portrait=0&color=ff6a2b${auto}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${esc(title)}"></iframe></div>`;
+  if (v.provider === "youtube") return `<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/${esc(v.id)}?rel=0&modestbranding=1${auto}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="${esc(title)}"></iframe></div>`;
+  return `<div class="video"><video src="${esc(v.src)}" ${v.poster ? `poster="${esc(v.poster)}"` : ""} ${autoplay ? "autoplay " : ""}controls playsinline preload="metadata"></video></div>`;
 }
 
 function openProject(id) {
