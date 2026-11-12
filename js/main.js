@@ -55,7 +55,7 @@ projects.forEach((p, i) => {
     <div class="card__media">
       ${p.cover ? `<img src="${esc(p.cover)}" alt="" loading="lazy">` : `<canvas aria-hidden="true"></canvas>`}
       ${p.hoverVideo ? `<video src="${esc(p.hoverVideo)}" muted loop playsinline preload="none"></video>` : ""}
-      ${p.comingSoon ? `<span class="badge mono">In progress</span>` : ""}
+      ${p.comingSoon ? `<span class="badge mono">${esc(p.badge || "In progress")}</span>` : ""}
     </div>
     <div class="card__body">
       <div class="card__meta mono"><span>${esc(p.category)}</span><span>${esc(p.year)}</span></div>
@@ -99,7 +99,7 @@ function openProject(id) {
     </div>
     <h2 id="projectTitle">${esc(p.title)}</h2>
     <p class="project__subtitle">${esc(p.subtitle)}</p>
-    <dl class="facts">${(p.facts || []).map(([k, v]) => `<div><dt class="mono">${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
+    <dl class="facts" style="--n:${(p.facts || []).length}">${(p.facts || []).map(([k, v]) => `<div><dt class="mono">${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
     ${p.links?.length ? `<div class="project__links">${p.links.map(l => `<a class="btn btn--primary" href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
     ${videoBlock(p.video, p.title)}
     <div data-compare hidden><h3 class="block-title">Before / after</h3><p class="block-sub">Both versions play in sync. Switch at any point to compare the same moment.</p><div class="stack"></div></div>

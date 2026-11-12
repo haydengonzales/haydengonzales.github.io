@@ -95,6 +95,38 @@ export const projects = [
     compare: [],
   },
   {
+    id: "destiny2-redesign",
+    title: "Destiny 2 Sound Redesign",
+    subtitle: "Every sound in a Destiny 2 gameplay clip, designed from scratch",
+    year: "2026",
+    category: "Sound redesign · Sci-fi",
+    summary: "Created all of the audio for Destiny 2 gameplay footage: sci-fi sound design, layered weapons and fictional sound sources with no real-world equivalent.",
+    tags: ["Sound design", "Sci-fi", "Weapons", "Layering"],
+    facts: [
+      ["Role", "Sound design & mix"],
+      ["Source", "Destiny 2 gameplay capture"],
+      ["Scope", "All audio"],
+    ],
+    cover: null,
+    hoverVideo: null,
+    video: null, // put the finished redesign on Vimeo and add its id here
+    body: `
+      <h3>Overview</h3>
+      <p>I replaced all of the audio in a Destiny 2 gameplay capture. Most of these sounds have no real-world source, so I designed the sci-fi sounds from scratch and built the weapons and fictional sound sources by layering.</p>
+      <p class="muted">Gameplay footage © Bungie. Used for non-commercial portfolio purposes; the sound design is my own.</p>
+    `,
+    gallery: [],
+    audio: [],
+    compare: [
+      {
+        title: "Original vs. redesign",
+        note: "Toggle mid-playback to hear the difference",
+        a: { label: "Original", src: "assets/audio/destiny2/original.wav" },
+        b: { label: "Redesign", src: "assets/audio/destiny2/redesign.wav" },
+      },
+    ],
+  },
+  {
     id: "mw2-redesign",
     title: "MW2 Sound Redesign",
     subtitle: "Call of Duty: Modern Warfare 2 Campaign Remastered, re-sounded from scratch",
@@ -168,6 +200,17 @@ export const projects = [
     links: [
       { label: "View code on GitHub", href: site.atmosRepo },
     ],
+  },
+  {
+    id: "ui-redesign",
+    title: "UI Sound Redesign",
+    subtitle: "",
+    year: "2026",
+    category: "Sound redesign · UI",
+    summary: "Sound design for a game's user interface. Full breakdown coming soon.",
+    tags: ["Sound design", "UI"],
+    comingSoon: true,
+    badge: "Coming soon",
   },
   {
     id: "tbd",
