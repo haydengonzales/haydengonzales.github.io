@@ -100,12 +100,12 @@ export const projects = [
     subtitle: "Call of Duty: Modern Warfare 2 Campaign Remastered, re-sounded from scratch",
     year: "2026",
     category: "Sound redesign",
-    summary: "Stripped the original audio from a Modern Warfare 2 Campaign Remastered gameplay clip and rebuilt every weapon, foley, ambience and UI sound.",
-    tags: ["Sound design", "Pro Tools", "Weapons", "Mix"],
+    summary: "Rebuilt the weapon and foley audio for a Modern Warfare 2 Campaign Remastered mission from real firearm recordings: gunfire, reloads and handling.",
+    tags: ["Sound design", "Weapons", "Foley"],
     facts: [
       ["Role", "Sound design & mix"],
       ["Source", "Contingency mission capture"],
-      ["DAW", "Pro Tools"],
+      ["Focus", "Weapons & foley"],
       ["Length", "1:05"],
     ],
     cover: null,
@@ -113,8 +113,8 @@ export const projects = [
     video: null, // put the finished redesign on Vimeo and add its id here
     body: `
       <h3>Overview</h3>
-      <p>I removed the original game audio from a capture of the Contingency mission and rebuilt the soundtrack from scratch.</p>
-      <p class="muted">Gameplay footage © Activision. Used for non-commercial portfolio purposes; all audio is my own.</p>
+      <p>I removed the original game audio from a capture of the Contingency mission and rebuilt the weapons and foley from real firearm recordings, including gunfire, reloads and weapon handling.</p>
+      <p class="muted">Gameplay footage © Activision. Used for non-commercial portfolio purposes; the sound design is my own.</p>
     `,
     gallery: [],
     audio: [],
