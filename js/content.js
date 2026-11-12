@@ -155,7 +155,7 @@ export const projects = [
         <li><strong>Import</strong> through Pro Tools' Session Data dialog, mapping each object onto its existing track.</li>
       </ol>
       <h3>Validation</h3>
-      <p>A reverse reader pulls real automation out of hand-mixed Atmos bounces so generated paths can be scored against a reference, and a preview plots each path on a top-down room map before it goes near Pro Tools. The <a href="#lab">Spatial Lab</a> on this site uses the same room coordinate space.</p>
+      <p>A reverse reader pulls real automation out of hand-mixed Atmos bounces so generated paths can be scored against a reference, and a preview plots each path on a top-down room map before it goes near Pro Tools. The <a href="#lab">Atmos panner demo</a> on this site lets you try that same room coordinate space by hand.</p>
       <h3>Honest limitations</h3>
       <p>Depth (Y) inferred from apparent object size is unreliable because bloom, occlusion and framing corrupt it. X and Z are the validated axes.</p>
     `,

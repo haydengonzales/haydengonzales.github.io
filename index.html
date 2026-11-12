@@ -24,8 +24,8 @@
     </a>
     <nav class="nav__links" aria-label="Sections">
       <a href="#work">Work</a>
-      <a href="#lab">Spatial Lab</a>
       <a href="#about">About</a>
+      <a href="#lab">Atmos Panner</a>
       <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -45,7 +45,7 @@
         <p class="hero__lede" id="heroLede"></p>
         <div class="hero__cta">
           <a class="btn btn--primary" href="#work">View work</a>
-          <a class="btn" href="#lab">Try the spatial lab <span aria-hidden="true">↗</span></a>
+          <a class="btn" href="#lab">Try the Atmos panner <span aria-hidden="true">↗</span></a>
         </div>
       </div>
       <div class="hero__meter mono" aria-hidden="true">
@@ -62,11 +62,27 @@
       <div class="grid" id="projectGrid"></div>
     </section>
 
+    <section class="section about" id="about" aria-labelledby="aboutTitle">
+      <div class="section__head">
+        <p class="mono eyebrow">02 / About</p>
+        <h2 id="aboutTitle">About</h2>
+      </div>
+      <div class="about__body">
+        <div class="about__intro">
+          <figure class="portrait" id="aboutPhoto" hidden>
+            <img alt="Hayden Gonzales" width="420" height="525" loading="lazy">
+          </figure>
+          <div class="about__bio" id="aboutBio"></div>
+        </div>
+        <div class="about__skills" id="aboutSkills"></div>
+      </div>
+    </section>
+
     <section class="section lab" id="lab" aria-labelledby="labTitle">
       <div class="section__head">
-        <p class="mono eyebrow">02 / Interactive</p>
-        <h2 id="labTitle">Spatial Lab</h2>
-        <p class="section__sub">A binaural object panner built with the Web Audio API. Drag the object around the room and raise it with the height control. <strong>Use headphones.</strong> It works in the same X/Y/Z room space as my Atmos panning tool's ADM export.</p>
+        <p class="mono eyebrow">03 / Interactive demo</p>
+        <h2 id="labTitle">Atmos Panner</h2>
+        <p class="section__sub">My <a href="#/atmos-panning">Atmos Panning Automation</a> tool tracks objects in video and turns their movement into Dolby Atmos panning automation. This demo lets you do the same thing by hand: drag a sound around a 7.1.4 room, raise it toward the ceiling and hear it move. It uses the same X/Y/Z room coordinates the tool exports. <strong>Use headphones.</strong></p>
       </div>
       <div class="lab__body">
         <div class="lab__stage">
@@ -104,22 +120,6 @@
           <p class="lab__note">HRTF rendering · inverse distance model · the dots are a 7.1.4 speaker layout</p>
           <a class="lab__code mono" id="labRepo" target="_blank" rel="noopener">Atmos tool code <span aria-hidden="true">↗</span></a>
         </div>
-      </div>
-    </section>
-
-    <section class="section about" id="about" aria-labelledby="aboutTitle">
-      <div class="section__head">
-        <p class="mono eyebrow">03 / About</p>
-        <h2 id="aboutTitle">About</h2>
-      </div>
-      <div class="about__body">
-        <div class="about__intro">
-          <figure class="portrait" id="aboutPhoto" hidden>
-            <img alt="Hayden Gonzales" width="420" height="525" loading="lazy">
-          </figure>
-          <div class="about__bio" id="aboutBio"></div>
-        </div>
-        <div class="about__skills" id="aboutSkills"></div>
       </div>
     </section>
 

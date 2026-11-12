@@ -308,3 +308,5 @@ input[type="checkbox"] { accent-color: var(--accent); width: 16px; height: 16px;
 }
 
 .prose .muted { color: var(--muted); font-size: 14px; }
+.section__sub a { color: var(--text); text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.section__sub a:hover { color: var(--accent); }
