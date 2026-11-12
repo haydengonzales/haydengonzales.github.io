@@ -50,17 +50,17 @@ Then visit http://localhost:8765.
 
 ## Publishing on GitHub Pages
 
-1. On GitHub, create a **public** repository named **`HaydenGonnzoo.github.io`**.
+1. On GitHub, create a **public** repository named **`haydengonzales.github.io`**.
 2. Push this folder to it:
    ```bash
    cd "/Users/haydengonzales/Documents/Game DEV/portfolio-site"
    git init && git add . && git commit -m "Portfolio site"
    git branch -M main
-   git remote add origin https://github.com/HaydenGonnzoo/HaydenGonnzoo.github.io.git
+   git remote add origin https://github.com/haydengonzales/haydengonzales.github.io.git
    git push -u origin main
    ```
 3. In the repo: **Settings → Pages → Source: Deploy from a branch → main / root**.
-4. After a minute it's live at **https://haydengonnzoo.github.io**.
+4. After a minute it's live at **https://haydengonzales.github.io**.
 
 **Custom domain (optional, ~$12/yr):** buy e.g. `haydengonzales.com`, add it under
 Settings → Pages → Custom domain, and follow GitHub's DNS instructions.

@@ -16,9 +16,9 @@ export const site = {
   lede: "Game audio, implementation and spatial sound. I design sounds, wire them into the engine, and build tools when the workflow gets in the way.",
   email: "HaydenHawkeGonzales@gmail.com",
   photo: "assets/img/hayden-portrait.jpg",
-  atmosRepo: "https://github.com/HaydenGonnzoo/Atmos_object_panning-HaydenGonzales",
+  atmosRepo: "https://github.com/haydengonzales/Atmos_object_panning-HaydenGonzales",
   links: [
-    { label: "GitHub", href: "https://github.com/HaydenGonnzoo" },
+    { label: "GitHub", href: "https://github.com/haydengonzales" },
     // { label: "LinkedIn", href: "https://www.linkedin.com/in/your-handle" },
     // { label: "Resume (PDF)", href: "assets/Hayden-Gonzales-Resume.pdf" },
   ],
