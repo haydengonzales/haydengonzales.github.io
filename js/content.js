@@ -83,8 +83,6 @@ export const projects = [
         <li>Surface-aware footsteps across wood, concrete, carpet and leaves.</li>
         <li>MetaSounds handle randomization and variation, so repeated sounds never play back identically.</li>
       </ul>
-      <h3>What I'd point out</h3>
-      <p>Replace this with what you're proudest of: a specific MetaSound graph, how the stalker's audio tells you where it is, or a mix decision.</p>
     `,
     gallery: [
       // { src: "assets/img/sz-metasound.png", caption: "Weapon fire MetaSound graph" },
@@ -113,10 +111,8 @@ export const projects = [
     hoverVideo: null,
     video: null, // put the finished redesign on Vimeo and add its id here
     body: `
-      <h3>Brief</h3>
-      <p>Replace this with your goal for the redesign, e.g. a heavier, more grounded weapon palette than the original.</p>
-      <h3>Process</h3>
-      <p>Describe your sources (recordings, libraries, synthesis), how you layered the weapons, and how you handled the mix around dialogue and music.</p>
+      <h3>Overview</h3>
+      <p>I removed the original game audio from a capture of the Contingency mission and rebuilt the soundtrack from scratch.</p>
       <p class="muted">Gameplay footage © Activision. Used for non-commercial portfolio purposes; all audio is my own.</p>
     `,
     gallery: [],

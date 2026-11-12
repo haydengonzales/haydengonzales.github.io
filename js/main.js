@@ -79,7 +79,7 @@ const body = $("#projectBody");
 let mounted = [];
 
 function videoBlock(v, title) {
-  if (!v) return `<div class="video"><div class="placeholder"><canvas data-cover="${esc(title)}"></canvas><span class="mono">Video coming soon</span></div></div>`;
+  if (!v) return "";
   if (v.provider === "vimeo") return `<div class="video"><iframe src="https://player.vimeo.com/video/${esc(v.id)}?dnt=1&title=0&byline=0&portrait=0&color=ff6a2b" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="${esc(title)}"></iframe></div>`;
   if (v.provider === "youtube") return `<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/${esc(v.id)}?rel=0&modestbranding=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="${esc(title)}"></iframe></div>`;
   return `<div class="video"><video src="${esc(v.src)}" ${v.poster ? `poster="${esc(v.poster)}"` : ""} controls playsinline preload="metadata"></video></div>`;
@@ -99,20 +99,34 @@ function openProject(id) {
     <dl class="facts">${(p.facts || []).map(([k, v]) => `<div><dt class="mono">${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
     ${p.links?.length ? `<div class="project__links">${p.links.map(l => `<a class="btn btn--primary" href="${esc(l.href)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join("")}</div>` : ""}
     ${videoBlock(p.video, p.title)}
-    ${p.compare?.length ? `<h3 class="block-title">Before / after</h3><p class="block-sub">Both versions play in sync. Switch at any point to compare the same moment.</p><div class="stack" data-compare></div>` : ""}
+    <div data-compare hidden><h3 class="block-title">Before / after</h3><p class="block-sub">Both versions play in sync. Switch at any point to compare the same moment.</p><div class="stack"></div></div>
     <div class="prose">${p.body || ""}</div>
-    ${p.audio?.length ? `<h3 class="block-title">Listen</h3><p class="block-sub">Click the waveform to seek.</p><div class="stack" data-audio></div>` : ""}
+    <div data-audio hidden><h3 class="block-title">Listen</h3><p class="block-sub">Click the waveform to seek.</p><div class="stack"></div></div>
     ${p.gallery?.length ? `<h3 class="block-title">Gallery</h3><div class="gallery">${p.gallery.map(g => `<figure class="figure"><img src="${esc(g.src)}" alt="${esc(g.caption || "")}" loading="lazy"><figcaption>${esc(g.caption || "")}</figcaption></figure>`).join("")}</div>` : ""}
   `;
-  const audioWrap = body.querySelector("[data-audio]");
-  p.audio?.forEach(a => { const pl = new WavePlayer(a); audioWrap.append(pl.el); mounted.push(pl); });
-  const cmpWrap = body.querySelector("[data-compare]");
-  p.compare?.forEach(c => { const pl = new ABPlayer(c); cmpWrap.append(pl.el); mounted.push(pl); });
+  // Only show players whose files exist, so unfinished slots stay invisible.
+  mountPlayers(body.querySelector("[data-audio]"), p.audio, a => [a.src], a => new WavePlayer(a));
+  mountPlayers(body.querySelector("[data-compare]"), p.compare, c => [c.a.src, c.b.src], c => new ABPlayer(c));
   body.querySelector("#closeProject").addEventListener("click", () => { location.hash = "#work"; });
   if (!dialog.open) { dialog.showModal(); uiSound("open"); }
   dialog.scrollTop = 0;
   document.title = `${p.title} — ${site.name}`;
   requestAnimationFrame(() => body.querySelectorAll("canvas[data-cover]").forEach(c => drawCover(c, p.id, 20)));
+}
+
+const exists = src => fetch(src, { method: "HEAD" }).then(r => r.ok, () => false);
+
+async function mountPlayers(block, items = [], sources, create) {
+  const ready = await Promise.all(items.map(async it => (await Promise.all(sources(it).map(exists))).every(Boolean)));
+  if (!block.isConnected) return; // another project was opened meanwhile
+  const stack = block.querySelector(".stack");
+  items.forEach((it, i) => {
+    if (!ready[i]) return;
+    const pl = create(it);
+    stack.append(pl.el);
+    mounted.push(pl);
+  });
+  block.hidden = !stack.children.length;
 }
 
 function unmount() {
