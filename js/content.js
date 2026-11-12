@@ -204,13 +204,26 @@ export const projects = [
   {
     id: "ui-redesign",
     title: "UI Sound Redesign",
-    subtitle: "",
+    subtitle: "All of the interface sound for three games, in one piece",
     year: "2026",
     category: "Sound redesign · UI",
-    summary: "Sound design for a game's user interface. Full breakdown coming soon.",
+    summary: "A combined redesign of the user interfaces from three different games, with every UI sound designed by me.",
     tags: ["Sound design", "UI"],
-    comingSoon: true,
-    badge: "Coming soon",
+    facts: [
+      ["Role", "Sound design"],
+      ["Interfaces", "3 games"],
+      ["Scope", "All UI audio"],
+    ],
+    cover: null,
+    hoverVideo: null,
+    video: null, // put the finished redesign on Vimeo and add its id here
+    body: `
+      <h3>Overview</h3>
+      <p>I took the user interfaces from three separate games, combined them into one piece and created all of the sound for each.</p>
+    `,
+    gallery: [],
+    audio: [],
+    compare: [],
   },
   {
     id: "tbd",
