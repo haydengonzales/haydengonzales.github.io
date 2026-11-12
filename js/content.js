@@ -28,7 +28,7 @@ export const site = {
   ],
   skills: [
     { group: "Sound design", items: ["Pro Tools", "iZotope RX", "Field & Foley recording", "Weapons & UI", "Ambience"] },
-    { group: "Implementation", items: ["Unreal Engine 5", "MetaSounds", "C++", "Blueprints", "Data-driven audio"] },
+    { group: "Implementation", items: ["Unreal Engine 5", "MetaSounds", "Blueprints", "Data-driven audio"] },
     { group: "Spatial / post", items: ["Dolby Atmos", "ADM / BWF", "Object panning", "Binaural", "Dialogue editing"] },
     { group: "Tools & code", items: ["Python", "SAM 2 tracking", "OpenCV", "Web Audio API"] },
   ],
