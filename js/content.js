@@ -14,7 +14,7 @@ export const site = {
   name: "Hayden Gonzales",
   role: "Sound Designer",
   lede: "Game audio, implementation and spatial sound. I design sounds, wire them into the engine, and build tools when the workflow gets in the way.",
-  email: "", // add the address you want public, e.g. "hello@haydengonzales.com"
+  email: "HaydenHawkeGonzales@gmail.com",
   atmosRepo: "https://github.com/HaydenGonnzoo/Atmos_object_panning-HaydenGonzales",
   links: [
     { label: "GitHub", href: "https://github.com/HaydenGonnzoo" },
