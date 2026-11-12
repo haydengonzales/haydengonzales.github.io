@@ -12,6 +12,10 @@ $("#heroLede").textContent = site.lede;
 $("#year").textContent = new Date().getFullYear();
 $("#labRepo").href = site.atmosRepo;
 $("#aboutBio").innerHTML = site.bio.map(p => `<p>${esc(p)}</p>`).join("");
+if (site.photo) {
+  $("#aboutPhoto img").src = site.photo;
+  $("#aboutPhoto").hidden = false;
+}
 $("#aboutSkills").innerHTML = site.skills.map(s => `
   <div class="skill-group">
     <h3>${esc(s.group)}</h3>

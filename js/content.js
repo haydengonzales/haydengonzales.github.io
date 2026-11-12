@@ -15,6 +15,7 @@ export const site = {
   role: "Sound Designer",
   lede: "Game audio, implementation and spatial sound. I design sounds, wire them into the engine, and build tools when the workflow gets in the way.",
   email: "HaydenHawkeGonzales@gmail.com",
+  photo: "assets/img/hayden-portrait.jpg",
   atmosRepo: "https://github.com/HaydenGonnzoo/Atmos_object_panning-HaydenGonzales",
   links: [
     { label: "GitHub", href: "https://github.com/HaydenGonnzoo" },
