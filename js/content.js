@@ -142,7 +142,7 @@ export const projects = [
     ],
     cover: null,
     hoverVideo: null,
-    video: null, // put the finished redesign on Vimeo and add its id here
+    video: { provider: "file", src: "assets/video/mw2-redesign.mp4" },
     body: `
       <h3>Overview</h3>
       <p>I removed the original game audio from a capture of the Contingency mission and rebuilt all of it: weapons and foley from real firearm recordings (gunfire, reloads, handling), plus the ambience and environmental sound.</p>
@@ -217,7 +217,7 @@ export const projects = [
     ],
     cover: null,
     hoverVideo: null,
-    video: null, // put the finished redesign on Vimeo and add its id here
+    video: { provider: "file", src: "assets/video/ui-redesign.mp4" },
     body: `
       <h3>Overview</h3>
       <p>I took the user interfaces from three separate games, combined them into one piece and created all of the sound for each.</p>
