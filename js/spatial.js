@@ -317,4 +317,5 @@ export function spatialLab(els) {
   }).observe(canvas);
   applyPosition(true);
   draw();
+  return { stop: () => running && setRunning(false) };
 }

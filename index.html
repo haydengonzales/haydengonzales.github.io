@@ -25,7 +25,6 @@
     <nav class="nav__links" aria-label="Sections">
       <a href="#work">Work</a>
       <a href="#about">About</a>
-      <a href="#lab">Atmos Panner</a>
       <a href="#reviews">Reviews</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -45,7 +44,7 @@
         <p class="hero__lede" id="heroLede"></p>
         <div class="hero__cta">
           <a class="btn btn--primary" href="#work">View work</a>
-          <a class="btn" href="#lab">Try the Atmos panner <span aria-hidden="true">↗</span></a>
+          <a class="btn" href="#contact">Get in touch</a>
         </div>
       </div>
       <div class="hero__meter mono" aria-hidden="true">
@@ -78,13 +77,29 @@
       </div>
     </section>
 
-    <section class="section lab" id="lab" aria-labelledby="labTitle">
-      <div class="section__head">
-        <p class="mono eyebrow">03 / Interactive demo</p>
-        <h2 id="labTitle">Atmos Panner</h2>
-        <p class="section__sub">My <a href="#/atmos-panning">Atmos Panning Automation</a> tool tracks objects in video and turns their movement into Dolby Atmos panning automation. This demo lets you do the same thing by hand: drag a sound around the room, raise it toward the ceiling and hear it move, using the same X/Y/Z coordinates the tool exports. It renders binaurally, so <strong>use headphones</strong>; on speakers it plays as plain stereo.</p>
+    <section class="reviews" id="reviews" aria-labelledby="reviewsTitle">
+      <div class="reviews__bg" id="reviewsBg" aria-hidden="true">
+        <div class="reviews__playhead"></div>
       </div>
-      <div class="lab__body">
+      <div class="section reviews__inner">
+        <div class="section__head">
+          <p class="mono eyebrow">03 / Kind words</p>
+          <h2 id="reviewsTitle">Reviews</h2>
+        </div>
+        <div class="reviews__grid" id="reviewsGrid"></div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contactTitle">
+      <p class="mono eyebrow">04 / Contact</p>
+      <h2 id="contactTitle" class="contact__title">Let's make something<br>that sounds right.</h2>
+      <div class="contact__links" id="contactLinks"></div>
+    </section>
+  </main>
+
+  <!-- The Atmos panner demo lives here until the Atmos project page mounts it. -->
+  <div id="labHome" hidden>
+      <div class="lab__body" id="labEmbed">
         <div class="lab__stage">
           <canvas id="labCanvas" tabindex="0" aria-label="Room view. Drag the sound object, or use arrow keys to move it."></canvas>
           <p class="lab__hint mono">Drag the object · arrow keys move it · front is up</p>
@@ -118,30 +133,9 @@
             <div><dt>Distance</dt><dd id="roDist">0.00</dd></div>
           </dl>
           <p class="lab__note">Binaural (HRTF) render for headphones · the dots show a 7.1.4 layout for reference</p>
-          <a class="lab__code mono" id="labRepo" target="_blank" rel="noopener">Atmos tool code <span aria-hidden="true">↗</span></a>
         </div>
       </div>
-    </section>
-
-    <section class="reviews" id="reviews" aria-labelledby="reviewsTitle">
-      <div class="reviews__bg" id="reviewsBg" aria-hidden="true">
-        <div class="reviews__playhead"></div>
-      </div>
-      <div class="section reviews__inner">
-        <div class="section__head">
-          <p class="mono eyebrow">04 / Kind words</p>
-          <h2 id="reviewsTitle">Reviews</h2>
-        </div>
-        <div class="reviews__grid" id="reviewsGrid"></div>
-      </div>
-    </section>
-
-    <section class="section contact" id="contact" aria-labelledby="contactTitle">
-      <p class="mono eyebrow">05 / Contact</p>
-      <h2 id="contactTitle" class="contact__title">Let's make something<br>that sounds right.</h2>
-      <div class="contact__links" id="contactLinks"></div>
-    </section>
-  </main>
+  </div>
 
   <footer class="footer mono">
     <span>© <span id="year"></span> Hayden Gonzales</span>

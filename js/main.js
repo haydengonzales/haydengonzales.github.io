@@ -10,7 +10,6 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;",
 
 $("#heroLede").textContent = site.lede;
 $("#year").textContent = new Date().getFullYear();
-$("#labRepo").href = site.atmosRepo;
 $("#aboutBio").innerHTML = site.bio.map(p => `<p>${esc(p)}</p>`).join("");
 if (site.photo) {
   $("#aboutPhoto img").src = site.photo;
@@ -105,11 +104,14 @@ function openProject(id) {
     ${videoBlock(p.video, p.title)}
     <div data-compare hidden><h3 class="block-title">Before / after</h3><p class="block-sub">Both versions play in sync. Switch at any point to compare the same moment.</p><div class="stack"></div></div>
     <div class="prose">${p.body || ""}</div>
+    ${p.demo ? `<div data-demo><h3 class="block-title">Try it: Atmos panner</h3><p class="block-sub">The same idea by hand: drag a sound around the room, raise it toward the ceiling and hear it move, in the X/Y/Z coordinates the tool exports. It renders binaurally, so use headphones; on speakers it plays as plain stereo.</p></div>` : ""}
     <div data-audio hidden><h3 class="block-title">Listen</h3><p class="block-sub">Click the waveform to seek.</p><div class="stack"></div></div>
     ${p.gallery?.length ? `<h3 class="block-title">Gallery</h3><div class="gallery">${p.gallery.map(g => `<figure class="figure"><img src="${esc(g.src)}" alt="${esc(g.caption || "")}" loading="lazy"><figcaption>${esc(g.caption || "")}</figcaption></figure>`).join("")}</div>` : ""}
   `;
   // Only show players whose files exist, so unfinished slots stay invisible.
   mountPlayers(body.querySelector("[data-audio]"), p.audio, a => [a.src], a => new WavePlayer(a));
+  // The panner is built once on load; it moves into whichever page shows it.
+  body.querySelector("[data-demo]")?.append($("#labEmbed"));
   mountPlayers(body.querySelector("[data-compare]"), p.compare, c => [c.a.src, c.b.src], c => new ABPlayer(c));
   body.querySelector("#closeProject").addEventListener("click", () => { location.hash = "#work"; });
   if (!dialog.open) { dialog.showModal(); uiSound("open"); }
@@ -135,6 +137,8 @@ async function mountPlayers(block, items = [], sources, create) {
 
 function unmount() {
   pauseAll();
+  lab.stop();
+  $("#labHome").append($("#labEmbed"));
   mounted.forEach(m => m.destroy?.());
   mounted = [];
 }
@@ -155,7 +159,6 @@ function route() {
   if (m) openProject(m[1]); else closeProject();
 }
 addEventListener("hashchange", route);
-route();
 
 // ---------- engine status + UI sound toggle ----------
 
@@ -182,7 +185,7 @@ document.querySelectorAll(".btn, .nav__links a").forEach(el => el.addEventListen
 
 heroScope($("#heroScope"), { l: $("#meterL"), r: $("#meterR") });
 
-spatialLab({
+const lab = spatialLab({
   canvas: $("#labCanvas"),
   play: $("#labPlay"),
   source: $("#labSource"),
@@ -192,3 +195,6 @@ spatialLab({
   orbit: $("#labOrbit"),
   ro: { x: $("#roX"), y: $("#roY"), z: $("#roZ"), az: $("#roAz"), el: $("#roEl"), dist: $("#roDist") },
 });
+
+// Open a project linked by URL once everything it may mount exists.
+route();

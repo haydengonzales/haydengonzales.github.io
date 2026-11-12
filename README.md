@@ -11,7 +11,7 @@ framework or build step. Edit a file, refresh, done.
   file itself. Click or drag to seek.
 - **A/B before/after player**: both versions play in sync; press **A** / **B**
   (or click) to crossfade between them at the same moment in the clip.
-- **Atmos Panner**: a hands-on demo of the Atmos tool, a binaural (HRTF) object panner. Drag a source around a
+- **Atmos Panner**: a hands-on demo on the Atmos project page, a binaural (HRTF) object panner. Drag a source around a
   7.1.4 room in the same ADM X/Y/Z space as the Atmos Panning Automation tool.
 - **UI sounds**: synthesized interface ticks, off by default (nav toggle).
 - Generative cover art for any project without an image.

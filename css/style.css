@@ -224,8 +224,6 @@ input[type="checkbox"] { accent-color: var(--accent); width: 16px; height: 16px;
 .readout dt { color: var(--muted); font-size: 10px; }
 .readout dd { margin: 2px 0 0; font-size: 15px; color: var(--text); text-transform: none; }
 .lab__note { color: var(--muted); font-size: 13px; margin: 0; }
-.lab__code { align-self: flex-start; color: var(--muted); text-decoration: none; transition: color .2s; }
-.lab__code:hover { color: var(--accent); }
 .project__links { display: flex; flex-wrap: wrap; gap: 10px; margin: -12px 0 32px; }
 
 /* ---------- reviews ---------- */
