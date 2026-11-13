@@ -51,7 +51,7 @@ projects.forEach((p, i) => {
   // The thumbnail plays the project's video; the rest of the card opens its page.
   const hasPage = !p.comingSoon && !p.videoOnly;
   const openPage = () => { location.hash = `#/${p.id}`; };
-  const badge = p.comingSoon ? p.badge || "In progress" : !p.video && p.videoOnly ? "Video coming soon" : "";
+  const badge = p.badge || (p.comingSoon ? "In progress" : !p.video && p.videoOnly ? "Video coming soon" : "");
   const mediaTag = p.video || hasPage ? "button" : "div";
   const card = document.createElement("article");
   card.className = "card";

@@ -58,41 +58,46 @@ export const reviews = [
 
 export const projects = [
   {
-    id: "signal-zero",
-    title: "Signal Zero",
-    subtitle: "Full audio pass for a UE5 horror shooter",
+    id: "atmos-panning",
+    title: "Immersive Panning",
+    subtitle: "From video motion tracking to Dolby Atmos object automation",
     year: "2026",
-    category: "Game audio · Implementation",
-    summary: "Designed and implemented every sound in a playable Unreal Engine 5.7 game, natively with MetaSounds and a C++ audio subsystem. No middleware.",
-    tags: ["Unreal Engine 5.7", "MetaSounds", "C++", "Sound design"],
+    category: "Spatial audio · Tool development",
+    summary: "A Python tool that tracks on-screen objects with SAM 2 and exports Dolby Atmos panning automation straight into an existing Pro Tools session.",
+    tags: ["Python", "SAM 2", "Dolby Atmos", "ADM / BWF", "Pro Tools"],
     facts: [
-      ["Role", "Sound design & implementation"],
-      ["Engine", "Unreal Engine 5.7"],
-      ["Audio", "Native UE / MetaSounds"],
-      ["Scope", "81 cues, data-driven bank"],
+      ["Role", "Design & development"],
+      ["Language", "Python"],
+      ["Tracking", "SAM 2"],
+      ["Output", "ADM BWF → Pro Tools"],
     ],
-    cover: null, // e.g. "assets/img/signal-zero.jpg"
-    hoverVideo: null, // short silent loop, e.g. "assets/video/signal-zero-loop.mp4"
-    video: null, // e.g. { provider: "vimeo", id: "123456789" }
+    cover: null,
+    hoverVideo: null,
+    video: null, // screen recording of the renderer's object view + binaural audio
     body: `
-      <h3>Overview</h3>
-      <p>Signal Zero is an arena/horror shooter built from Unreal's first-person template, which shipped with no audio. I authored the entire soundscape and the systems that drive it: weapons, footsteps, ambience, UI and an AI stalker that hunts the player through a haunted level.</p>
-      <h3>Implementation</h3>
-      <ul>
-        <li>A C++ <code>AudioSubsystem</code> exposes one call, <code>PlayCue</code>, so gameplay code never references a sound asset directly.</li>
-        <li>All 81 cues live in a single data-asset audio bank, so sounds can be swapped or rebalanced without touching code.</li>
-        <li>Surface-aware footsteps across wood, concrete, carpet and leaves.</li>
-        <li>MetaSounds handle randomization and variation, so repeated sounds never play back identically.</li>
-      </ul>
+      <h3>The problem</h3>
+      <p>Panning Atmos objects to follow on-screen motion means hours of manual keyframing. This tool generates that automation from the picture and applies it to audio that's already on the tracks. It never creates or replaces audio.</p>
+      <h3>Pipeline</h3>
+      <ol>
+        <li><strong>Shot detection</strong> splits the video at cuts and dissolves, since tracking can't cross a cut.</li>
+        <li><strong>Click-and-pan</strong>: I click the object in a shot and SAM 2 tracks it frame by frame. Camera motion is separated from object motion.</li>
+        <li><strong>Export</strong> writes an ADM/BWF WAV (<code>axml</code> + <code>chna</code> chunks) carrying the position automation.</li>
+        <li><strong>Import</strong> through Pro Tools' Session Data dialog, mapping each object onto its existing track.</li>
+      </ol>
+      <h3>Validation</h3>
+      <p>A reverse reader pulls real automation out of hand-mixed Atmos bounces so generated paths can be scored against a reference, and a preview plots each path on a top-down room map before it goes near Pro Tools. The demo below lets you try that same room coordinate space by hand.</p>
+      <h3>Honest limitations</h3>
+      <p>Depth (Y) inferred from apparent object size is unreliable because bloom, occlusion and framing corrupt it. X and Z are the validated axes.</p>
     `,
-    gallery: [
-      // { src: "assets/img/sz-metasound.png", caption: "Weapon fire MetaSound graph" },
-    ],
+    gallery: [],
     audio: [
-      { title: "Weapon fire: layered", src: "assets/audio/signal-zero/weapon-fire.mp3", note: "Mechanics, body and tail layers" },
-      { title: "Haunted cabin ambience", src: "assets/audio/signal-zero/ambience.mp3", note: "Looping bed + randomized one-shots" },
+      { title: "Binaural render (headphones)", src: "assets/audio/atmos/binaural.mp3", note: "Rendered from the Dolby Atmos Renderer" },
     ],
     compare: [],
+    demo: true,
+    links: [
+      { label: "View code on GitHub", href: site.atmosRepo },
+    ],
   },
   {
     id: "destiny2-redesign",
@@ -160,46 +165,42 @@ export const projects = [
     ],
   },
   {
-    id: "atmos-panning",
-    title: "Atmos Panning Automation",
-    subtitle: "From video motion tracking to Dolby Atmos object automation",
+    id: "signal-zero",
+    badge: "In progress", // trailer coming; the playable demo comes later
+    title: "Signal Zero",
+    subtitle: "Full audio pass for a UE5 horror shooter",
     year: "2026",
-    category: "Spatial audio · Tool development",
-    summary: "A Python tool that tracks on-screen objects with SAM 2 and exports Dolby Atmos panning automation straight into an existing Pro Tools session.",
-    tags: ["Python", "SAM 2", "Dolby Atmos", "ADM / BWF", "Pro Tools"],
+    category: "Game audio · Implementation",
+    summary: "Designed and implemented every sound in a playable Unreal Engine 5.7 game, natively with MetaSounds and a C++ audio subsystem. No middleware.",
+    tags: ["Unreal Engine 5.7", "MetaSounds", "C++", "Sound design"],
     facts: [
-      ["Role", "Design & development"],
-      ["Language", "Python"],
-      ["Tracking", "SAM 2"],
-      ["Output", "ADM BWF → Pro Tools"],
+      ["Role", "Sound design & implementation"],
+      ["Engine", "Unreal Engine 5.7"],
+      ["Audio", "Native UE / MetaSounds"],
+      ["Scope", "81 cues, data-driven bank"],
     ],
-    cover: null,
-    hoverVideo: null,
-    video: null, // screen recording of the renderer's object view + binaural audio
+    cover: null, // e.g. "assets/img/signal-zero.jpg"
+    hoverVideo: null, // short silent loop, e.g. "assets/video/signal-zero-loop.mp4"
+    video: null, // e.g. { provider: "vimeo", id: "123456789" }
     body: `
-      <h3>The problem</h3>
-      <p>Panning Atmos objects to follow on-screen motion means hours of manual keyframing. This tool generates that automation from the picture and applies it to audio that's already on the tracks. It never creates or replaces audio.</p>
-      <h3>Pipeline</h3>
-      <ol>
-        <li><strong>Shot detection</strong> splits the video at cuts and dissolves, since tracking can't cross a cut.</li>
-        <li><strong>Click-and-pan</strong>: I click the object in a shot and SAM 2 tracks it frame by frame. Camera motion is separated from object motion.</li>
-        <li><strong>Export</strong> writes an ADM/BWF WAV (<code>axml</code> + <code>chna</code> chunks) carrying the position automation.</li>
-        <li><strong>Import</strong> through Pro Tools' Session Data dialog, mapping each object onto its existing track.</li>
-      </ol>
-      <h3>Validation</h3>
-      <p>A reverse reader pulls real automation out of hand-mixed Atmos bounces so generated paths can be scored against a reference, and a preview plots each path on a top-down room map before it goes near Pro Tools. The demo below lets you try that same room coordinate space by hand.</p>
-      <h3>Honest limitations</h3>
-      <p>Depth (Y) inferred from apparent object size is unreliable because bloom, occlusion and framing corrupt it. X and Z are the validated axes.</p>
+      <h3>Overview</h3>
+      <p>Signal Zero is an arena/horror shooter built from Unreal's first-person template, which shipped with no audio. I authored the entire soundscape and the systems that drive it: weapons, footsteps, ambience, UI and an AI stalker that hunts the player through a haunted level.</p>
+      <h3>Implementation</h3>
+      <ul>
+        <li>A C++ <code>AudioSubsystem</code> exposes one call, <code>PlayCue</code>, so gameplay code never references a sound asset directly.</li>
+        <li>All 81 cues live in a single data-asset audio bank, so sounds can be swapped or rebalanced without touching code.</li>
+        <li>Surface-aware footsteps across wood, concrete, carpet and leaves.</li>
+        <li>MetaSounds handle randomization and variation, so repeated sounds never play back identically.</li>
+      </ul>
     `,
-    gallery: [],
+    gallery: [
+      // { src: "assets/img/sz-metasound.png", caption: "Weapon fire MetaSound graph" },
+    ],
     audio: [
-      { title: "Binaural render (headphones)", src: "assets/audio/atmos/binaural.mp3", note: "Rendered from the Dolby Atmos Renderer" },
+      { title: "Weapon fire: layered", src: "assets/audio/signal-zero/weapon-fire.mp3", note: "Mechanics, body and tail layers" },
+      { title: "Haunted cabin ambience", src: "assets/audio/signal-zero/ambience.mp3", note: "Looping bed + randomized one-shots" },
     ],
     compare: [],
-    demo: true,
-    links: [
-      { label: "View code on GitHub", href: site.atmosRepo },
-    ],
   },
   {
     id: "ui-redesign",
