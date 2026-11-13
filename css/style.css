@@ -139,8 +139,8 @@ button.card__media { cursor: pointer; }
 .card__summary { color: var(--muted); margin: 0; font-size: 15.5px; }
 .card__more { margin-top: auto; padding-top: 10px; color: var(--accent); font-size: 14px; text-decoration: none; align-self: flex-start; }
 .card__more:hover { text-decoration: underline; }
-.badge {
-  position: absolute; top: 14px; left: 14px; z-index: 1;
+.badge, .card__media .badge {
+  position: absolute; inset: 14px auto auto 14px; width: auto; height: auto; z-index: 2;
   background: rgba(10, 11, 13, .75); backdrop-filter: blur(6px);
   border: 1px solid var(--line); border-radius: 99px; padding: 4px 10px;
 }

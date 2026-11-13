@@ -114,7 +114,7 @@ export const projects = [
     ],
     cover: null,
     hoverVideo: null,
-    video: null, // put the finished redesign on Vimeo and add its id here
+    video: { provider: "file", src: "assets/video/destiny2-redesign.mp4" },
     body: `
       <h3>Overview</h3>
       <p>I replaced all of the audio in a Destiny 2 gameplay capture. Most of these sounds have no real-world source, so I designed the sci-fi sounds from scratch and built the weapons and fictional sound sources by layering.</p>
@@ -181,7 +181,7 @@ export const projects = [
     ],
     cover: null, // e.g. "assets/img/signal-zero.jpg"
     hoverVideo: null, // short silent loop, e.g. "assets/video/signal-zero-loop.mp4"
-    video: null, // e.g. { provider: "vimeo", id: "123456789" }
+    video: { provider: "file", src: "assets/video/signal-zero-trailer.mp4" },
     body: `
       <h3>Overview</h3>
       <p>Signal Zero is an arena/horror shooter built from Unreal's first-person template, which shipped with no audio. I authored the entire soundscape and the systems that drive it: weapons, footsteps, ambience, UI and an AI stalker that hunts the player through a haunted level.</p>
@@ -228,13 +228,14 @@ export const projects = [
     compare: [],
   },
   {
-    id: "tbd",
-    title: "Next project",
+    id: "post-production",
+    videoOnly: true, // the card plays the reel; there is no project page
+    title: "Featured Post-Production Work",
     subtitle: "",
-    year: "Soon",
+    year: "2026",
     category: "Post production",
-    summary: "A post-production mix is on the way: dialogue cleanup, sound effects and a final mix.",
+    summary: "A selection of my post-production sound work.",
     tags: ["Post production"],
-    comingSoon: true,
+    video: { provider: "file", src: "assets/video/post-production.mp4" },
   },
 ];
