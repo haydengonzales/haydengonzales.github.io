@@ -114,7 +114,7 @@ export const projects = [
     ],
     cover: null,
     hoverVideo: null,
-    video: { provider: "file", src: "assets/video/destiny2-redesign.mp4" },
+    video: { provider: "file", src: "assets/video/destiny2-redesign-v2.mp4" },
     body: `
       <h3>Overview</h3>
       <p>I replaced all of the audio in a Destiny 2 gameplay capture. Most of these sounds have no real-world source, so I designed the sci-fi sounds from scratch and built the weapons and fictional sound sources by layering.</p>
@@ -147,7 +147,7 @@ export const projects = [
     ],
     cover: null,
     hoverVideo: null,
-    video: { provider: "file", src: "assets/video/mw2-redesign.mp4" },
+    video: { provider: "file", src: "assets/video/mw2-redesign-v2.mp4" },
     body: `
       <h3>Overview</h3>
       <p>I removed the original game audio from a capture of the Contingency mission and rebuilt all of it: weapons and foley from real firearm recordings (gunfire, reloads, handling), plus the ambience and environmental sound.</p>
