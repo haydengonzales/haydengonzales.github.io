@@ -73,7 +73,7 @@ export const projects = [
     ],
     cover: null,
     hoverVideo: null,
-    video: null, // screen recording of the renderer's object view + binaural audio
+    video: { provider: "file", src: "assets/video/immersive-panning.mp4" },
     body: `
       <h3>The problem</h3>
       <p>Panning Atmos objects to follow on-screen motion means hours of manual keyframing. This tool generates that automation from the picture and applies it to audio that's already on the tracks. It never creates or replaces audio.</p>
