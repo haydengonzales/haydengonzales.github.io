@@ -13,7 +13,7 @@
 export const site = {
   name: "Hayden Gonzales",
   role: "Sound Designer",
-  lede: "Game audio, implementation and spatial sound. I design sounds, wire them into the engine, and build tools when the workflow gets in the way.",
+  lede: "Sound designer and audio implementer. I create the sounds, wire them into Unreal Engine with MetaSounds and Wwise, and make sure they play right every time.",
   email: "HaydenHawkeGonzales@gmail.com",
   photo: "assets/img/hayden-portrait.jpg",
   atmosRepo: "https://github.com/haydengonzales/Atmos_object_panning-HaydenGonzales",
